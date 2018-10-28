@@ -34,7 +34,7 @@ end_list<-c("X1969.12.16", "X2015.12.16",  "X2065.12.16","X2079.12.16")
 #loop through files, extract relevant years, apply global mask, and write cleaned
 #climate data (as .nc) to file for later use
 for (i in (1:length(filename))){
-  pathname<-paste( "./Climate.Data/Hadley/",filename[i],".nc",sep="")
+  pathname<-paste( "./path/",filename[i],".nc",sep="")
   nc <- nc_open(pathname) #call in data
   b<- brick(pathname, varname="tas") #as a rasterbrick
   # b #check ok
@@ -68,7 +68,7 @@ for (i in (1:length(filename))){
   #Assign projection 
   projectExtent(r3, "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs +towgs84=0,0,0") 
   #write raster output as new .nc file, only the landareas required
-  writeRaster(r3, filename=paste( "./CCIP/Hadley.climate.cleaned/", names[i],".nc",sep=""), overwrite=TRUE)
+  writeRaster(r3, filename=paste( "./path/", names[i],".nc",sep=""), overwrite=TRUE)
 }
 
 
@@ -77,27 +77,27 @@ for (i in (1:length(filename))){
 #--------------------------------------------------------------------------------------
 
 #Prepare the co-ordinates for the species locations
-df<-as.data.frame(read.csv(file = "./CCIP/extended.latlons.csv", sep = ",", header=TRUE))
+my_coords<-as.data.frame(read.csv(file = "./path/my_coordinates.csv", sep = ",", header=TRUE))
 
 #set up new filenames for each timeperiod
 filename <- c("historical", "current", "near_future", "future")
 
 #loop through the four prepped climate files and extract data from each location
 for (i in (1:4)){
-  pathname<-paste(".CCIP/Hadley.climate.cleaned/",filename[i],".nc",sep="")
+  pathname<-paste("./path/",filename[i],".nc",sep="")
   nc <- nc_open(pathname) #call in the cleaned climate .nc file
   b<- brick(pathname, varname="variable") 
   plot(b$X1) 
-  points(df$lat~df$lon, pch = 19, cex=0.5 ) #plot the points to check ok
+  points(my_coords$lat~my_coords$lon, pch = 19, cex=0.5 ) #plot the points to check ok
   abline(h=0, col="red", lty=2) #plot equator to check ok
 
-  points.sp <- na.omit(df) #omit missing locations from lat/lon data
+  points.sp <- na.omit(my_coords) #omit missing locations from lat/lon data
   coordinates(points.sp) <- ~ lon + lat #convert points to coordinates
   climate.points <- raster::extract(b, points.sp) #extract coordinates from climate raster
   print(climate.points) #check ok
 
   #transpose and clean output file
-  output <- cbind(na.omit(df), climate.points) #remove any missing values (not within global extent)
+  output <- cbind(na.omit(my_coords), climate.points) #remove any missing values (not within global extent)
   output <- as.data.frame(t(climate.points)) #transpose data
   colnames(output) <- points.sp$Common.name #assign species name to headers
   output$month <- c(rep(1:12,10)) #include month column
@@ -117,7 +117,7 @@ for (i in (1:4)){
   }
   #combine temperature with the lat/lons and assign timestamp before returning to top of loop
   temperature <- unlist(ave_temp)
-  final.output <-cbind(na.omit(df), temperature)
+  final.output <-cbind(na.omit(my_coords, temperature))
   assign(filename[i], final.output) #assign name to final.output and continue to top of loop
 }
 
@@ -125,7 +125,7 @@ for (i in (1:4)){
 fin<-as.data.frame(cbind(historical, current$temperature, near_future$temperature, future$temperature))
 colnames(fin)<-c("lat","lon","common_name","historical","current" ,"near_future","future")
 head(fin)
-write.csv(fin,"./CCIP/climate.outputs/Hadley_climate_average_at_species_sites.csv") 
+write.csv(fin,"./path/output_filname.csv") 
 
 #----------------------------------------------------------------------------------------------
 #END_SCRIPT
