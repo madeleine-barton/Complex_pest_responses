@@ -16,6 +16,7 @@ Gregor Kalinkat8†, Seppo Neuvonen9†, Pekka Niemelä10†, Bjørn Økland11�
 11. Norwegian Institute of Bioeconomy Research, Norway.
 
 *Corresponding author: Philipp Lehmann, philipp.lehmann@zoologi.su.se.
+
 †Contributing authors listed alphabetically.
 
 
