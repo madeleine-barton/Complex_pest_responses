@@ -1,4 +1,4 @@
-##Complex responses of global insect pests to climate change
+## Complex responses of global insect pests to climate change
 
 Philipp Lehmann1,2,4*, Tea Ammunét3†, Madeleine Barton4†, Andrea Battisti5†, Sanford D. Eigenbrode6†, Jane Uhd Jepsen7†, 
 Gregor Kalinkat8†, Seppo Neuvonen9†, Pekka Niemelä10†, Bjørn Økland11†, John S. Terblanche4†, Christer Björkman3
@@ -15,8 +15,8 @@ Gregor Kalinkat8†, Seppo Neuvonen9†, Pekka Niemelä10†, Bjørn Økland11�
 10. Biodiversity Unit, University of Turku, Finland.
 11. Norwegian Institute of Bioeconomy Research, Norway.
 
-*Corresponding author: Philipp Lehmann, philipp.lehmann@zoologi.su.se
-†Contributing authors listed alphabetically.
+* *Corresponding author: Philipp Lehmann, philipp.lehmann@zoologi.su.se*
+*†Contributing authors listed alphabetically.*
 
 
 Versions: R.3.4.3; RStudio 1.1.453
