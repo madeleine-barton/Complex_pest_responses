@@ -16,9 +16,10 @@ Gregor Kalinkat8†, Seppo Neuvonen9†, Pekka Niemelä10†, Bjørn Økland11�
 11. Norwegian Institute of Bioeconomy Research, Norway.
 
 *Corresponding author: Philipp Lehmann, philipp.lehmann@zoologi.su.se.
-
 †Contributing authors listed alphabetically.
 
+
+Code for data analysis methods, including extraction of relevant climate predictions from online GCM datasets, and phylogenetic analyses of thermal traits for species considered.
 
 Versions: R.3.4.3; RStudio 1.1.453
 Packages Required:
