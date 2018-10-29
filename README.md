@@ -19,7 +19,7 @@ Gregor Kalinkat8†, Seppo Neuvonen9†, Pekka Niemelä10†, Bjørn Økland11�
 †Contributing authors listed alphabetically.
 
 
-Code for data analysis methods, including extraction of relevant climate predictions from online GCM datasets, and phylogenetic analyses of thermal traits for species considered.
+Code for data analysis methods, including extraction of relevant climate predictions from online GCM datasets, and regression analyses of thermal traits for species considered (while accounting for phylogeny).
 
 Versions: R.3.4.3; RStudio 1.1.453
 Packages Required:
@@ -28,5 +28,5 @@ Phylogenetic Analysis: picante; adephylo; ade4; geiger; ape; rotl; caper; MCMCgl
 
 Climate data downloaded prior to extraction from https://esgf-node.llnl.gov/projects/esgf-llnl/ 
 
-Data collated and written to file (here, example in ”Tip_data_3.txt”)
+Output data for phylogenetic analysis collated and written to file (here, example in ”Tip_data_3.txt”)
 
